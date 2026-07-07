@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryunan Hub 🔴⚫</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Mitr:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        html, body { margin: 0; padding: 0; min-height: 100vh; }
+        body { 
+            background-color: #050002;
+            background-image: radial-gradient(circle at 20% 30%, rgba(60, 0, 15, 0.8) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(90, 0, 20, 0.6) 0%, transparent 50%);
+            font-family: 'Mitr', sans-serif; color: #ffffff; display: flex; justify-content: center; align-items: center; padding: 20px;
+        }
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(circle, #ff0055 1.5px, transparent 1.5px), radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 90px 90px, 130px 130px; animation: sparkle 3s infinite alternate; z-index: -1; pointer-events: none; }
+        @keyframes sparkle { 0% { opacity: 0.1; } 100% { opacity: 0.5; transform: scale(1.02); } }
+        .container { background: rgba(15, 15, 15, 0.85); max-width: 500px; width: 100%; border-radius: 24px; padding: 30px; border: 2px solid #ff0055; box-shadow: 0 0 25px rgba(255, 0, 85, 0.5); backdrop-filter: blur(10px); }
+        h1 { font-family: 'Orbitron', sans-serif; color: #ff0055; text-align: center; text-shadow: 0 0 15px #ff0055; }
+        .image-box { text-align: center; background: rgba(30, 30, 30, 0.6); padding: 15px; border-radius: 18px; margin-bottom: 25px; border: 1px solid rgba(255, 0, 85, 0.2); }
+        .profile-img { max-width: 100%; max-height: 350px; border-radius: 12px; box-shadow: 0 0 20px rgba(255, 0, 85, 0.4); }
+        
+        .neon-btn { display: block; width: 100%; padding: 16px; margin-bottom: 12px; background: transparent; color: #ff0055; border: 2px solid #ff0055; border-radius: 12px; font-weight: bold; cursor: pointer; transition: 0.3s; font-family: 'Mitr', sans-serif; }
+        .neon-btn:hover { background: #ff0055; color: #fff; box-shadow: 0 0 20px #ff0055; }
+
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 100; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: #1a1a1a; border: 2px solid #ff0055; padding: 30px; border-radius: 20px; max-width: 400px; width: 100%; text-align: center; position: relative; }
+        .close-btn { position: absolute; top: 10px; right: 15px; color: #ff0055; font-size: 24px; cursor: pointer; }
+        
+        .contact-group { margin-top: 25px; border-top: 1px solid #333; padding-top: 20px; }
+        .link-btn { display: block; text-align: center; padding: 14px; margin-bottom: 10px; background: rgba(38, 38, 38, 0.7); color: #fff; text-decoration: none; border-radius: 10px; border: 1px solid rgba(255, 0, 85, 0.3); }
+    </style>
+</head>
+<body>
+
+<div class="stars"></div>
+<div class="container">
+    <h1>RYUNAN HUB</h1>
+    <div class="image-box">
+        <img src="https://i.ibb.co/qYPSZWS4/IMG-1251.png" alt="Ryunan" class="profile-img">
+    </div>
+
+    <button class="neon-btn" onclick="openModal('intro')">👤 แนะนำตัว 🏎️</button>
+    <button class="neon-btn" onclick="openModal('front')">🔘 ข้อมูลตัวละครหน้าบ้าน 🏎️</button>
+    <button class="neon-btn" onclick="openModal('back')">🔘 ข้อมูลตัวละครหลังบ้าน 🏎️</button>
+
+    <div class="contact-group">
+        <a href="https://instagram.com/zwexur._" target="_blank" class="link-btn">📸 Instagram (zwexur._)</a>
+        <a href="https://www.tiktok.com/@xx._owez?_r=1&_t=ZS-97pgfMoSi6k" target="_blank" class="link-btn">🎵 TikTok</a>
+        <a href="https://loveydovey.onelink.me/vs4G/ewygf3ml" target="_blank" class="link-btn">💕 LoveyDovey</a>
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<script>
+    const content = {
+        intro: { title: "แนะนำตัว", text: "สวัสดีครับผมชื่อ รยูนัน ที่เป็นเจ้าของแท็กบ้าน #ลูกพ่อยูสุดเข้ครับ และยินดีที่ได้รู้จักครับ สามารถมาทำความรู้จัก และแจ้งปัญหาให้ผมทราบได้ทางช่องการติดต่อ IG: zwexur._" },
+        front: { title: "หน้าบ้าน", text: "เป็นตัวละครที่จะเปิดเผย และปล่อยลงให้เล่นหน้าบ้านเลิฟวี่ดัฟวี่ของรยูนันเท่านั้น ตัวอย่างเช่น ลุงวันดี, อื่นๆ" },
+        back: { title: "หลังบ้าน", text: "เป็นตัวละครที่ไม่เปิดเผย หรือตัวละครที่ทางรยูนันใช้เทสบอทหน้าบ้านเท่านั้น การแยกตัวละครหน้าบ้านคือให้ดู หัวข้อไฮไลท์ของสตอรี่นั้นๆที่รยูนันได้เพิ่มเอาไว้ในไอจี" }
+    };
+
+    function openModal(type) {
+        document.getElementById("modal-body").innerHTML = `<h2>${content[type].title}</h2><p>${content[type].text}</p>`;
+        document.getElementById("myModal").style.display = "flex";
+    }
+    function closeModal() { document.getElementById("myModal").style.display = "none"; }
+</script>
+
+</body>
+</html>
