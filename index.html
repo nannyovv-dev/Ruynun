@@ -11,9 +11,8 @@
         :root {
             --neon-red: #ff003c;
             --neon-glow: rgba(255, 0, 60, 0.65);
-            --neon-intense: 0 0 15px #ff003c, 0 0 30px #ff003c, 0 0 45px #ff003c;
             --blood-dark: #0a0104;
-            --glass-bg: rgba(10, 2, 5, 0.88);
+            --glass-bg: rgba(10, 2, 5, 0.85);
             --font-display: 'Orbitron', sans-serif;
             --font-body: 'Mitr', sans-serif;
         }
@@ -23,16 +22,6 @@
             padding: 0; 
             min-height: 100vh; 
             background-color: var(--blood-dark);
-            /* ลวดลายลูกไม้แนวโกธิค (Gothic Lace Pattern) ผสมพื้นหลังดวงจันทร์ */
-            background-image: 
-                radial-gradient(circle at 50% 50%, transparent 9%, rgba(255, 0, 60, 0.03) 10%, rgba(255, 0, 60, 0.03) 12%, transparent 13%),
-                radial-gradient(circle at 0 0, transparent 9%, rgba(255, 0, 60, 0.03) 10%, rgba(255, 0, 60, 0.03) 12%, transparent 13%),
-                radial-gradient(circle at 100% 100%, transparent 9%, rgba(255, 0, 60, 0.03) 10%, rgba(255, 0, 60, 0.03) 12%, transparent 13%),
-                radial-gradient(circle at 100% 0, transparent 9%, rgba(255, 0, 60, 0.03) 10%, rgba(255, 0, 60, 0.03) 12%, transparent 13%),
-                radial-gradient(circle at 0 100%, transparent 9%, rgba(255, 0, 60, 0.03) 10%, rgba(255, 0, 60, 0.03) 12%, transparent 13%),
-                linear-gradient(45deg, transparent 48%, rgba(255, 0, 60, 0.02) 50%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, rgba(255, 0, 60, 0.02) 50%, transparent 52%);
-            background-size: 60px 60px, 60px 60px, 60px 60px, 60px 60px, 60px 60px, 60px 60px, 60px 60px;
             font-family: var(--font-body); 
             color: #ffffff; 
             display: flex; 
@@ -41,7 +30,7 @@
             overflow-x: hidden;
         }
 
-        /* แสงออร่าสีแดงลึกลับชั้นหลัง */
+        /* พื้นหลังดวงจันทร์สีเลือดและแสงสีแดงนีออนลึกลับ */
         .background-overlay {
             position: fixed;
             top: 0;
@@ -49,13 +38,13 @@
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(circle at 15% 25%, rgba(150, 0, 30, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 85% 75%, rgba(255, 0, 60, 0.2) 0%, transparent 50%);
+                radial-gradient(circle at 10% 20%, rgba(120, 0, 25, 0.4) 0%, transparent 45%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 60, 0.25) 0%, transparent 50%);
             z-index: -2;
             pointer-events: none;
         }
 
-        /* เศษละอองดาวกุหลาบกระพริบ */
+        /* ดาวกระพริบและเศษละอองกุหลาบสีแดง */
         .ambient-particles {
             position: fixed;
             top: 0;
@@ -65,16 +54,16 @@
             background-image: 
                 radial-gradient(circle, var(--neon-red) 1px, transparent 1.5px),
                 radial-gradient(circle, #ffffff 0.8px, transparent 1.2px);
-            background-size: 130px 130px, 170px 170px;
+            background-size: 110px 110px, 150px 150px;
             animation: pulseAmbient 4s infinite alternate;
             z-index: -1;
             pointer-events: none;
-            opacity: 0.3;
+            opacity: 0.4;
         }
 
         @keyframes pulseAmbient {
-            0% { opacity: 0.15; transform: scale(1); }
-            100% { opacity: 0.4; transform: scale(1.02); }
+            0% { opacity: 0.2; transform: scale(1); }
+            100% { opacity: 0.5; transform: scale(1.03); }
         }
 
         /* ─── MAIN CONTAINER ─── */
@@ -93,6 +82,7 @@
             margin: 20px auto;
         }
 
+        /* ตกแต่งใบกุหลาบมุมกล่อง */
         .container::after {
             content: '🌹';
             position: absolute;
@@ -113,7 +103,7 @@
             margin-bottom: 25px;
         }
         
-        /* ─── IMAGE BOX NEON RUNNING LIGHTS ─── */
+        /* ─── กรอบรูปนีออนไฟวิ่งสีแดงแบบสมูท ─── */
         .image-box { 
             text-align: center; 
             background: rgba(15, 5, 8, 0.8); 
@@ -152,19 +142,19 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* 🛠️ แก้ไขตรงนี้: ปล่อยให้แสดงผลรูปภาพเต็มใบ ไม่โดนครอบสัดส่วน */
+        /* รูปภาพเห็นเต็มๆ ไม่ตัดสัดส่วน */
         .profile-img { 
             width: 100%;
-            height: auto;
-            max-height: none; 
-            object-fit: contain;
+            height: auto; 
+            max-height: 400px; 
+            object-fit: contain; 
             border-radius: 14px; 
             box-shadow: 0 0 15px rgba(255, 0, 60, 0.4);
             display: block;
             transition: opacity 0.3s ease, transform 0.5s ease;
         }
 
-        /* ─── SWAP IMAGE BUTTON ─── */
+        /* ─── ปุ่มสลับรูปดีไซน์แคปซูลอวกาศสีแดง ─── */
         .swap-btn {
             background: linear-gradient(135deg, var(--neon-red), #990022);
             color: #fff;
@@ -188,15 +178,17 @@
             transform: scale(1.08) translateY(-2px);
         }
 
-        .swap-btn:active { transform: scale(0.95); }
+        .swap-btn:active {
+            transform: scale(0.95);
+        }
         
-        /* ─── MAIN BUTTONS ─── */
+        /* ─── ปุ่มรายการหลัก ─── */
         .neon-btn { 
             display: block; 
             width: 100%; 
             padding: 15px; 
             margin-bottom: 14px; 
-            background: rgba(20, 5, 10, 0.5); 
+            background: rgba(20, 5, 10, 0.4); 
             color: #ffffff; 
             border: 2px solid var(--neon-red); 
             border-radius: 16px; 
@@ -221,32 +213,27 @@
         }
 
         .neon-btn:hover { 
-            background: rgba(255, 0, 60, 0.15);
-            box-shadow: 0 0 15px rgba(255, 0, 60, 0.4);
+            background: var(--neon-red); 
+            color: #ffffff; 
+            box-shadow: 0 0 20px var(--neon-glow), inset 0 0 10px rgba(255,255,255,0.4); 
             transform: translateX(4px);
         }
 
-        /* เอฟเฟกต์เรืองแสงเด่นชัดเมื่อกดปุ่ม (Active State) */
-        .neon-btn.btn-active {
-            background: var(--neon-red) !important;
-            color: #ffffff !important;
-            box-shadow: var(--neon-intense), inset 0 0 15px rgba(255, 255, 255, 0.6) !important;
-            border-color: #ffffff !important;
-            animation: pulseGlow 1.5s infinite alternate;
+        /* เอฟเฟกต์ค้างไว้เมื่อปุ่มถูกเลือก (Active ปุ่มจะเรืองแสงนีออนสะใจ) */
+        .neon-btn.active {
+            background: var(--neon-red);
+            color: #ffffff;
+            box-shadow: 0 0 25px var(--neon-red), inset 0 0 15px #ffffff;
+            border-color: #ffffff;
+            transform: translateX(6px);
         }
 
-        .neon-btn.btn-active::after {
-            color: #ffffff !important;
-            transform: rotate(180deg) scale(1.3);
-            text-shadow: 0 0 10px #fff;
+        .neon-btn.active::after {
+            color: #fff;
+            transform: rotate(90deg) scale(1.3);
         }
 
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 15px #ff003c, 0 0 25px #ff003c, inset 0 0 10px rgba(255,255,255,0.4); }
-            100% { box-shadow: 0 0 25px #ff003c, 0 0 45px #ff003c, inset 0 0 20px rgba(255,255,255,0.6); }
-        }
-
-        /* ─── CONTACT LINKS ─── */
+        /* ─── ลิงก์ติดต่อด้านล่าง ─── */
         .contact-group { 
             margin-top: 30px; 
             border-top: 1px dashed rgba(255, 0, 60, 0.3); 
@@ -276,7 +263,7 @@
             transform: scale(1.02);
         }
 
-        /* ─── หน้าต่างป๊อปอัป (MODAL) อัปเกรดไฟนีออนจัดเต็ม ─── */
+        /* ─── หน้าต่างป๊อปอัป (MODAL) ดีไซน์ล้ำยุค ─── */
         .modal { 
             display: none; 
             position: fixed; 
@@ -284,109 +271,119 @@
             left: 0; 
             width: 100%; 
             height: 100%; 
-            background: rgba(4, 0, 2, 0.93); 
+            background: rgba(5, 1, 3, 0.85); 
             z-index: 100; 
             justify-content: center; 
             align-items: center; 
             padding: 20px; 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .modal-content { 
-            background: #0a0103;
-            border: 3px solid #ff003c; 
-            padding: 35px 25px; 
-            border-radius: 28px; 
+        /* 🔴 ปรับโครงสร้างกล่องป๊อปอัปภายนอกสำหรับสร้างทางเดินของไฟวิ่ง */
+        .modal-container-box {
             max-width: 380px; 
             width: 100%; 
-            text-align: center; 
-            position: relative; 
-            box-shadow: 
-                0 0 20px #ff003c,
-                0 0 40px #ff003c,
-                0 0 70px rgba(255, 0, 60, 0.8),
-                inset 0 0 25px rgba(255, 0, 60, 0.3); 
-            transform: scale(0.8);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+            background: rgba(15, 5, 8, 0.8); 
+            padding: 5px; 
+            border-radius: 28px; 
+            position: relative;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* นีออนขอบนอกแบบเรืองแสงสะใจ */
+            box-shadow: 0 0 45px rgba(255, 0, 60, 0.7);
+            /* จุดเริ่มต้นเอฟเฟกต์ย่อตัวลง */
+            transform: scale(0.7);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .modal-content::before {
+        /* ตัวสร้างสายฟ้า/ไฟสีแดงนีออนวิ่งรอบป๊อปอัป */
+        .modal-container-box::before {
             content: '';
             position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: conic-gradient(transparent, rgba(255, 255, 255, 0.3), transparent, var(--neon-red));
-            animation: rotateNeon 4s linear infinite;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.5;
+            width: 170%;
+            height: 170%;
+            background: conic-gradient(transparent, transparent, transparent, var(--neon-red));
+            animation: rotateNeon 2.5s linear infinite;
         }
 
-        .modal-content-inner {
-            position: relative;
-            z-index: 2;
-            background: rgba(10, 1, 3, 0.93);
-            border-radius: 20px;
-            padding: 10px;
+        /* กล่องเนื้อหาป๊อปอัปภายในเพื่อบังแผ่นเอฟเฟกต์ไฟวิ่งด้านหลัง */
+        .modal-content { 
+            background: linear-gradient(145deg, #160207, #060002);
+            padding: 35px 25px; 
+            border-radius: 24px; 
+            width: 100%;
+            text-align: center; 
+            position: relative; 
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: inset 0 0 20px rgba(255, 0, 60, 0.3);
         }
 
-        .modal.active { display: flex; }
-
-        .modal.active .modal-content {
-            transform: scale(1);
+        /* เอฟเฟกต์เมื่อป๊อปอัปเปิดฉาก (เด้งออกมาและจางเข้าชัดเจน) */
+        .modal.show-up {
+            display: flex;
             opacity: 1;
         }
 
+        .modal.show-up .modal-container-box {
+            transform: scale(1); /* เด้งขยายพุ่งออกมา */
+        }
+
+        /* ตกแต่งด้านในโมดอลด้วยสัญลักษณ์ดวงจันทร์และกุหลาบ */
         .modal-decor {
             position: relative;
             width: 80px;
             height: 80px;
             margin: 0 auto 15px;
-            background: radial-gradient(circle, var(--neon-red) 20%, transparent 75%);
+            background: radial-gradient(circle, var(--neon-red) 10%, transparent 70%);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 0 25px var(--neon-red);
+            box-shadow: 0 0 20px rgba(255, 0, 60, 0.3);
         }
 
+        /* พระจันทร์เสี้ยวสีเลือด SVG */
         .blood-moon-svg {
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             fill: #ffffff;
-            filter: drop-shadow(0 0 8px #ff003c);
+            filter: drop-shadow(0 0 8px var(--neon-red));
         }
 
         .modal-content h2 {
             font-family: var(--font-display);
             color: #ffffff;
-            font-size: 24px;
+            font-size: 22px;
             margin: 10px 0 15px;
-            text-shadow: 0 0 12px #ff003c, 0 0 5px #fff;
-            letter-spacing: 1.5px;
-            border-bottom: 2px solid rgba(255,0,60,0.4);
+            text-shadow: 0 0 15px var(--neon-red);
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255,0,60,0.3);
             padding-bottom: 12px;
+            line-height: 1.4;
         }
 
         .modal-content p {
             font-size: 15px;
-            line-height: 1.7;
-            color: #ffffff;
-            text-shadow: 0 0 4px rgba(0,0,0,0.8);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 0;
-            font-weight: 400;
+            font-weight: 300;
             text-align: center;
         }
 
+        /* ปุ่มปิดรูปกากบาทนีออน */
         .close-btn { 
             position: absolute; 
             top: 15px; 
             right: 20px; 
-            color: rgba(255, 255, 255, 0.6); 
-            font-size: 30px; 
+            color: rgba(255, 255, 255, 0.5); 
+            font-size: 28px; 
             cursor: pointer; 
             transition: all 0.3s ease;
             font-family: sans-serif;
@@ -396,20 +393,20 @@
         
         .close-btn:hover { 
             color: var(--neon-red); 
-            text-shadow: var(--neon-intense);
+            text-shadow: 0 0 15px var(--neon-red);
             transform: rotate(90deg) scale(1.2);
         }
 
+        /* ตกแต่งลายกิ่งหนามกุหลาบจางๆ ในป๊อปอัป */
         .rose-thorns-bg {
             position: absolute;
-            bottom: -15px;
+            bottom: -20px;
             left: -10px;
             width: 120%;
             height: auto;
-            opacity: 0.15;
+            opacity: 0.08;
             pointer-events: none;
-            transform: rotate(-3deg);
-            z-index: 1;
+            transform: rotate(-5deg);
         }
     </style>
 </head>
@@ -421,6 +418,7 @@
 <div class="container">
     <h1>RYUNAN HUB</h1>
     
+    <!-- กล่องรูปภาพพร้อมไฟวิ่งนีออนสีแดงสะใจ -->
     <div class="image-box">
         <div class="image-box-inner">
             <img id="profileImage" src="https://i.ibb.co/qYPSZWS4/IMG-1251.png" alt="Ryunan" class="profile-img">
@@ -436,9 +434,10 @@
         </button>
     </div>
 
-    <button id="btn-intro" class="neon-btn" onclick="openModal('intro', this)">👤 แนะนำตัว 🏎️</button>
-    <button id="btn-front" class="neon-btn" onclick="openModal('front', this)">🔘 ข้อมูลตัวละครหน้าบ้าน 🏎️</button>
-    <button id="btn-back" class="neon-btn" onclick="openModal('back', this)">🔘 ข้อมูลตัวละครหลังบ้าน 🏎️</button>
+    <button class="neon-btn" onclick="openModal('intro', this)">👤 แนะนำตัว 🏎️</button>
+    <button class="neon-btn" onclick="openModal('guideline', this)">📌 แนวทางการสร้างโดยรวม 🏎️</button>
+    <button class="neon-btn" onclick="openModal('front', this)">🔘 ข้อมูลตัวละครหน้าบ้าน 🏎️</button>
+    <button class="neon-btn" onclick="openModal('back', this)">🔘 ข้อมูลตัวละครหลังบ้าน 🏎️</button>
 
     <div class="contact-group">
         <a href="https://instagram.com/zwexur._" target="_blank" class="link-btn">
@@ -456,37 +455,44 @@
     </div>
 </div>
 
+<!-- ─── หน้าต่างป๊อปอัปดีไซน์ BLOOD MOON & ไฟวิ่งนีออนรอบกรอบ ─── -->
 <div id="myModal" class="modal" onclick="closeModalOnOuterClick(event)">
-    <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        
-        <div class="modal-content-inner">
+    <div class="modal-container-box">
+        <div class="modal-content">
+            <!-- ปุ่มปิดมุมบนขวา -->
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
             <div class="modal-decor">
+                <!-- พระจันทร์เสี้ยวสีเลือดผสานดอกไม้ -->
                 <svg class="blood-moon-svg" viewBox="0 0 24 24">
                     <path d="M12.3 2a10 10 0 0 0-1.9.2 8 8 0 1 1 8.2 8.2c-.2-2-.8-3.9-1.9-5.5a10 10 0 0 0-4.4-2.9zm-2.8 13.4c.1.3.2.7.2 1.1a3.5 3.5 0 0 1-7 0c0-.4.1-.8.2-1.1a4 4 0 0 0 6.6 0zM12 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
                 </svg>
             </div>
             
+            <!-- ส่วนหัวและเนื้อหาที่จะเปลี่ยนไปตามปุ่มที่กด -->
             <div id="modal-inner-content">
                 <h2 id="modal-title">หัวข้อ</h2>
                 <p id="modal-text">เนื้อหาข้อความจะอยู่ตรงนี้...</p>
             </div>
-        </div>
 
-        <svg class="rose-thorns-bg" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0,15 Q25,5 50,15 T100,15" fill="none" stroke="#ff003c" stroke-width="0.8"/>
-            <path d="M20,11 L23,15 L18,15 Z M45,15 L43,9 L48,13 Z M75,10 L78,15 L73,15 Z" fill="#ff003c"/>
-        </svg>
+            <!-- กราฟิกกิ่งกุหลาบหลังโมดอลเพิ่มความแฟนตาซี -->
+            <svg class="rose-thorns-bg" viewBox="0 0 100 30" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,15 Q25,5 50,15 T100,15" fill="none" stroke="#ff003c" stroke-width="0.8"/>
+                <path d="M20,11 L23,15 L18,15 Z M45,15 L43,9 L48,13 Z M75,10 L78,15 L73,15 Z" fill="#ff003c"/>
+            </svg>
+        </div>
     </div>
 </div>
 
 <script>
+    // รูปภาพที่ผู้ใช้ให้มา
     const images = [
         "https://i.ibb.co/qYPSZWS4/IMG-1251.png",
         "https://i.ibb.co/W4HQzc1b/IMG-1279.png"
     ];
     let currentImageIndex = 0;
 
+    // ระบบสลับรูปภาพแบบสมูท
     function toggleImage() {
         const imgElement = document.getElementById("profileImage");
         currentImageIndex = currentImageIndex === 0 ? 1 : 0;
@@ -501,10 +507,15 @@
         }, 200);
     }
 
+    // ข้อมูลเนื้อหาในแต่ละป๊อปอัป
     const content = {
         intro: { 
             title: "🌹 แนะนำตัว 🌹", 
             text: "สวัสดีครับผมชื่อ รยูนัน ที่เป็นเจ้าของแท็กบ้าน #ลูกพ่อยูสุดเข้ครับ และยินดีที่ได้รู้จักครับ สามารถมาทำความรู้จัก และแจ้งปัญหาให้ผมทราบได้ทางช่องการติดต่อ IG: zwexur._" 
+        },
+        guideline: {
+            title: "🩸 แนวทางการสร้างโดยรวมของบ้านรยูนัน 🩸",
+            text: "แนวส่วนใหญ่ก็คือแนว BL คู่ชายรักชาย และเน้นทั้ง Top(รุก) กับ Bottom(รับ) มีทั้งสองรูปแบบ เน้นสร้างตัวละครชายเสียส่วนใหญ่ ไม่ค่อยถนัดสร้างแนวรวมสักเท่าไหร่ ขออภัยในความไม่สะดวกครับ สร้างแนวตามใจตนเอง หากอยากเล่นแบบไหน ก็จะสร้างแบบนั้นครับ ส่วนใหญ่ จะธงเขียว/เหลือง ไม่ก็แดงบางครั้ง ฝากติดตามด้วยครับ"
         },
         front: { 
             title: "🌒 ตัวละครหน้าบ้าน 🌒", 
@@ -516,33 +527,43 @@
         }
     };
 
-    function openModal(type, element) {
-        document.querySelectorAll('.neon-btn').forEach(btn => {
-            btn.classList.remove('btn-active');
-        });
+    // เปิดป๊อปอัปกระเด้งกระแทกตา + ไฟวิ่งรอบกรอบป๊อปอัป + ปุ่มเรืองแสงค้าง
+    function openModal(type, btnElement) {
+        // ล้างสถานะเรืองแสงของปุ่มเก่าออกให้หมดก่อน
+        document.querySelectorAll('.neon-btn').forEach(btn => btn.classList.remove('active'));
         
-        if(element) {
-            element.classList.add('btn-active');
+        // ใส่สถานะเรืองแสงค้างไว้ที่ปุ่มที่กดเลือกล่าสุด
+        if(btnElement) {
+            btnElement.classList.add('active');
         }
 
+        // อัปเดตข้อความข้างในป๊อปอัป
         document.getElementById("modal-title").innerText = content[type].title;
         document.getElementById("modal-text").innerText = content[type].text;
         
         const modal = document.getElementById("myModal");
         modal.style.display = "flex";
         
-        void modal.offsetWidth; 
-        modal.classList.add("active");
+        // ดีเลย์นิดเดียวเพื่อให้ CSS ทำเอฟเฟกต์กระเด้ง Scale และ Fade-in สมบูรณ์
+        setTimeout(() => {
+            modal.classList.add("show-up");
+        }, 10);
     }
 
+    // ปิดป๊อปอัปแบบนุ่มนวล พร้อมปิดสถานะเรืองแสงของปุ่ม
     function closeModal() {
         const modal = document.getElementById("myModal");
-        modal.classList.remove("active");
+        modal.classList.remove("show-up");
+        
+        // ดับไฟนีออนที่ปุ่มหลังปิดหน้าต่าง
+        document.querySelectorAll('.neon-btn').forEach(btn => btn.classList.remove('active'));
+        
         setTimeout(() => {
             modal.style.display = "none";
-        }, 300);
+        }, 300); 
     }
 
+    // กดพื้นที่นอกกล่องป๊อปอัปเพื่อปิดงาน
     function closeModalOnOuterClick(event) {
         if (event.target.id === "myModal") {
             closeModal();
